@@ -1,4 +1,5 @@
 import {Fragment,} from 'react';
+import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 
 import Spinner from "./Spinner";
@@ -9,12 +10,21 @@ import Actions from "./Actions"
 // компонент отображения списка
 
 export default function ServicesList() {
-    const {list, loading, error} = useSelector(state => state.list);
+    const {list, loading, error} = useSelector(state => state.serviceList.list);
     const dispatch = useDispatch();
+
+    console.log({list}, {loading}, {error})
 
     return (
         <Fragment>
-            <table className="table table-striped">
+            <Link to="/">Reload</Link>
+        </Fragment>
+
+    )
+}
+
+/*
+<table className="table table-striped">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -37,7 +47,4 @@ export default function ServicesList() {
                 </tbody>
             </table>
             {error && <Message variant="list" />}
-        </Fragment>
-
-    )
-}
+*/
