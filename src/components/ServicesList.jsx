@@ -10,21 +10,15 @@ import Actions from "./Actions"
 // компонент отображения списка
 
 export default function ServicesList() {
-    const {list, loading, error} = useSelector(state => state.serviceList.list);
+    const {list, status, loading, error} = useSelector(state => state.serviceList);
     const dispatch = useDispatch();
 
-    console.log({list}, {loading}, {error})
+    console.log({list}, {status})
 
     return (
         <Fragment>
             <Link to="/">Reload</Link>
-        </Fragment>
-
-    )
-}
-
-/*
-<table className="table table-striped">
+            <table className="table table-striped">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -47,4 +41,7 @@ export default function ServicesList() {
                 </tbody>
             </table>
             {error && <Message variant="list" />}
-*/
+        </Fragment>
+
+    )
+}

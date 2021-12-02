@@ -43,14 +43,13 @@ export const serviceList = {
         }
     },
     effects: dispatch => ({
-        async fetchInitialData(payload, rootState) {
+        async fetchInitialData(playload, rootState) {
             try {
-                console.log('1')
                 dispatch.serviceList.setStatus("PENDING");
                 const response = await fetch(process.env.REACT_APP_SEARCH_URL);
                 const data = await response.json();
                 console.log(data);
-                rootState.serviceList = initialState;
+                
                 dispatch.serviceList.setStatus("SUCCEEDED")
             } catch (e) {
                 console.log(e)

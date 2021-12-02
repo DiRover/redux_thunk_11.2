@@ -1,4 +1,4 @@
-import {
+/*import {
     LOAD_LIST,
     LOAD_LIST_SUCCESS,
     LOAD_LIST_FAILED,
@@ -70,3 +70,4 @@ export default function listReducer(state = initialState, action) {
             return state;
     }
 }
+*/
