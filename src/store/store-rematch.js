@@ -29,7 +29,7 @@ export const serviceList = {
     state: initialState,
     reducers: {
         put(state, action) {
-            state.list = action.payload;
+            state.list = action;
         },
         add(state, action) {
             state.list.push(action);
@@ -39,7 +39,7 @@ export const serviceList = {
             state.list.splice(id, 1);
         },
         setStatus(state, action) {
-            state.status = action.payload;
+            state.status = action;
         }
     },
     effects: dispatch => ({
@@ -49,8 +49,8 @@ export const serviceList = {
                 const response = await fetch(process.env.REACT_APP_SEARCH_URL);
                 const data = await response.json();
                 console.log(data);
-                
-                dispatch.serviceList.setStatus("SUCCEEDED")
+                dispatch.serviceList.setStatus("SUCCEEDED");
+                dispatch.serviceList.put(data);
             } catch (e) {
                 console.log(e)
                 dispatch.serviceList.setStatus("ERROR")

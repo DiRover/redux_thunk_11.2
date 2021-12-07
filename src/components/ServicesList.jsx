@@ -13,7 +13,7 @@ export default function ServicesList() {
     const {list, status, loading, error} = useSelector(state => state.serviceList);
     const dispatch = useDispatch();
 
-    console.log({list}, {status})
+    console.log(loading);
 
     return (
         <Fragment>
@@ -28,7 +28,7 @@ export default function ServicesList() {
                 </tr>
                 </thead>
                 <tbody>
-                {!loading ? list.map((item, index) => {
+                {status === "SUCCEEDED" ? list.map((item, index) => {
                     return (
                         <tr key={item.id} >
                             <th scope="row">{index + 1}</th>
@@ -40,7 +40,7 @@ export default function ServicesList() {
                 }) : <Spinner />}`
                 </tbody>
             </table>
-            {error && <Message variant="list" />}
+            {status === "ERROR" && <Message variant="list" />}
         </Fragment>
 
     )
