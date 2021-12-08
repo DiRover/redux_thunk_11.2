@@ -1,7 +1,9 @@
 import {Link} from 'react-router-dom';
-
+import {useDispatch} from 'react-redux';
+// компонент для отрисвоки кнопок "Редактировать" и "Удалить"
 export default function Actions(props) {
-    const {id, dispatch} = props;
+    const {id} = props; // получаем id элемента для уаления или редактирования
+    const dispatch = useDispatch();
 
     return (
         <>

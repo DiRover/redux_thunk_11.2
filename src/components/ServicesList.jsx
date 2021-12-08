@@ -8,6 +8,7 @@ import Actions from "./Actions"
 
 
 // компонент отображения списка
+// всякая логика для спинера и сообщения об ошибке 
 
 export default function ServicesList() {
     const {list, status} = useSelector(state => state.serviceList);

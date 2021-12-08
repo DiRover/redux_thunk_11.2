@@ -4,17 +4,21 @@ import {Link} from 'react-router-dom';
 import Spinner from "./Spinner";
 import Message from "./Message";
 import {Redirect} from "react-router";
-
+// компонент для отрисовки страницы с редактирование информации об услуге
 export default function Description() {
-    const {description, status, save, upload} = useSelector(state => state.serviceList);
+    const {description, status, save, upload} = useSelector(state => state.serviceList); // получаем данные для редактироваия 
     const dispatch = useDispatch();
 
-    const onSubmit = (val) => {
-        const value = {id: val.id, name: val.Name, price: Number(val.Price), content: val.Content};
-        dispatch.serviceList.fetchUploadData(value);
+    const onSubmit = (val) => {// после редактирования отправляем измененную услугу на сервер
+        const value = {id: val.id, name: val.Name, price: Number(val.Price), content: val.Content}; // получаем данные из формы редактирования
+        dispatch.serviceList.fetchUploadData(value); //отправляем
     }
 
-    const handleCancel = () => dispatch.serviceList.cancel();
+    const handleCancel = () => dispatch.serviceList.cancel(); //обработка отмены редактирования 
+
+    // много сложной логики для отображения спинеров, информации об услуги и кнопок,
+    // а также дополнительного сообщения, если загрузка изменненой информации об услуги не была отправлена на сервер
+    // модалка с ошибкой со стороны сервера также тут отображается
 
     return (
         <>

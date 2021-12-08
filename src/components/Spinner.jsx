@@ -1,3 +1,5 @@
+// компонент со спинером
+
 function Spinner() {
     return (
         <div className="d-flex justify-content-center" style={{"margin": "30px auto 0 auto"}}>
