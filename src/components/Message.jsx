@@ -1,11 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
-import {useContext} from "react";
-import Context from "../context/Context";
-import {loadDescription, loadList} from "../actions/actionCreators";
 
 export default function Message(prop) {
-    const {id} = useSelector(state => state.list);
-    const {getFetch} = useContext(Context);
+    const {id} = useSelector(state => state.serviceList);
     const dispatch = useDispatch();
 
     const {variant} = prop;
@@ -13,12 +9,10 @@ export default function Message(prop) {
     const handleRequest = () => {
         switch (variant) {
             case 'list':
-                dispatch(loadList());
-                getFetch({method: "GET", dispatch});
+                dispatch.serviceList.fetchInitialData(id);
                 break;
             case 'description':
-                dispatch(loadDescription(id));
-                getFetch({method: "GET", dispatch, id});
+                dispatch.serviceList.fetchDescriptionData(id);
                 break;
             default:
                 break;

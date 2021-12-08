@@ -1,11 +1,7 @@
-import Context from '../context/Context';
-import {useContext} from "react";
 import {Link} from 'react-router-dom';
-import {loadDescription} from "../actions/actionCreators";
 
 export default function Actions(props) {
     const {id, dispatch} = props;
-    const {getFetch} = useContext(Context);
 
     return (
         <>
@@ -13,8 +9,7 @@ export default function Actions(props) {
                 <Link to="/description">
                     <button type="button" className="btn btn-outline-dark"
                             onClick={() => {
-                                getFetch({method: "GET", dispatch, id});
-                                dispatch(loadDescription(id));
+                                dispatch.serviceList.fetchDescriptionData(id);
                             }}>
                     <span className="material-icons">
                         edit
@@ -22,7 +17,9 @@ export default function Actions(props) {
                     </button>
                 </Link>
                 <button type="button" className="btn btn-outline-dark"
-                        onClick={() => getFetch({method: "DELETE", dispatch, id})}>
+                        onClick={() => {
+                            dispatch.serviceList.fetchDeleteData(id);
+                        }}>
                     <span className="material-icons">
                         delete
                     </span>
